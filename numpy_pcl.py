@@ -4,7 +4,7 @@ import rospy
 from sensor_msgs.msg import PointCloud2
 
 import util
-import py3d
+import open3d as o3d
 import numpy as np
 
 def numpy_pcl(pcl_data):
@@ -15,7 +15,7 @@ def numpy_pcl(pcl_data):
 
     pc_c[:,0] = 0
 
-    pc_c3d = py3d.Vector3dVector(pc_c)
+    pc_c3d = o3d.Vector3dVector(pc_c)
 
     tmp_pcl.colors = pc_c3d
 

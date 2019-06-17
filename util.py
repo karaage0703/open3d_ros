@@ -6,7 +6,7 @@ from std_msgs.msg import Header
 from sensor_msgs.msg import PointCloud2, PointField
 import numpy as np
 import sensor_msgs.point_cloud2 as pc2
-import py3d
+import open3d as o3d
 
 pub = rospy.Publisher('/output', PointCloud2, queue_size=1)
 tmp_pcd_name = "/tmp/tmp_cloud.pcd"
@@ -25,7 +25,6 @@ TEST_POINTS = [
 ]
 
 def convert_pcl(data):
-    import py3d
     header = '''# .PCD v0.7 - Point Cloud Data file format
 VERSION 0.7
 FIELDS x y z rgb
@@ -55,7 +54,7 @@ DATA ascii'''
 
         f.write("\n")
 
-    pcd = py3d.read_point_cloud(tmp_pcd_name)
+    pcd = o3d.read_point_cloud(tmp_pcd_name)
 
     return pcd
 

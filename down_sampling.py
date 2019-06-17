@@ -4,10 +4,10 @@ import rospy
 from sensor_msgs.msg import PointCloud2
 
 import util
-import py3d
+import open3d as o3d
 
 def down_sampling(pcl_data):
-    downpcd = py3d.voxel_down_sample(pcl_data, voxel_size = 0.05)
+    downpcd = o3d.voxel_down_sample(pcl_data, voxel_size = 0.05)
 
     return downpcd
 
